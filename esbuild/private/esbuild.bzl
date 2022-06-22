@@ -199,7 +199,6 @@ def _esbuild_impl(ctx):
         "logLimit": 0,
         "metafile": True,
         "platform": ctx.attr.platform,
-        "preserveSymlinks": True,
         "sourcesContent": ctx.attr.sources_content,
         "target": ctx.attr.target,
     })
