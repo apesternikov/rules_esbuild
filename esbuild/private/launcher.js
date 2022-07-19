@@ -150,11 +150,12 @@ async function runOneBuild(args, userArgsFilePath, configFilePath) {
     args.preserveSymlinks = false
   }
 
-  const metafile = getFlag('--metafile')
-
   try {
     const result = await esbuild.build(args)
-    writeFileSync(metafile, JSON.stringify(result.metafile))
+    if (result.metafile) {
+      const metafile = getFlag('--metafile');
+      writeFileSync(metafile, JSON.stringify(result.metafile));
+    }
   } catch (e) {
     console.error(e)
     process.exit(1)
